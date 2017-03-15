@@ -37,7 +37,10 @@ module.exports = React.createClass({
     var cells = props.children || props.columns
             .map(this.renderCell.bind(this, this.props))
 
-    return <div {...props}>{cells}</div>
+    const {cellFactory, renderCell, renderText, rowHeight, minWidth,
+      rowContextMenu, showMenu, _onClick, selectable, index, columns, defaultStyle, ...rest} = props
+
+    return <div {...rest}>{cells}</div>
   },
 
   prepareProps: function(thisProps){
