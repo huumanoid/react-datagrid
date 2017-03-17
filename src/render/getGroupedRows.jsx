@@ -36,6 +36,9 @@ function renderGroupRow(props, groupData){
         paddingLeft: (groupData.depth - 1) * props.groupNestingWidth
     }
 
+    var renderGroup = props.renderGroup?
+        props.renderGroup.bind(this, groupData):
+        undefined
 
     return <Row className='z-group-row' key={'group-'+groupData.valuePath} rowHeight={props.rowHeight}>
         <Cell
@@ -43,6 +46,7 @@ function renderGroupRow(props, groupData){
             contentPadding={props.cellPadding}
             text={groupData.value}
             style={cellStyle}
+            renderCell={renderGroup}
         />
     </Row>
 }
